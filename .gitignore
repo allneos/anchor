@@ -1,0 +1,32 @@
+# --- System / Editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.sln
+*.sw?
+
+# --- Logs ---
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# --- Node / PNPM ---
+node_modules/
+**/node_modules/
+dist/
+dist-ssr/
+*.local
+pnpm-lock.yaml
+
+# --- Tauri / Rust ---
+target/
+**/target/
+src-tauri/target/
+
+# --- Ren'Py / SDK ---
+**/*.rpyc
+**/saves/
