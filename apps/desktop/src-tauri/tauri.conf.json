@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "anchor-allneos",
-        "width": 800,
-        "height": 450
+        "width": 1600,
+        "height": 900
       }
     ],
     "security": {
