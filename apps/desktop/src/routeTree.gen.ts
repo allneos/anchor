@@ -11,6 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkspaceRouteImport } from './routes/workspace'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkspaceSonarRouteImport } from './routes/workspace.sonar'
+import { Route as WorkspaceSettingsRouteImport } from './routes/workspace.settings'
+import { Route as WorkspaceHorizonRouteImport } from './routes/workspace.horizon'
+import { Route as WorkspaceDashboardRouteImport } from './routes/workspace.dashboard'
+import { Route as WorkspaceCrewRouteImport } from './routes/workspace.crew'
+import { Route as WorkspaceChartRouteImport } from './routes/workspace.chart'
+import { Route as WorkspaceCargoRouteImport } from './routes/workspace.cargo'
 
 const WorkspaceRoute = WorkspaceRouteImport.update({
   id: '/workspace',
@@ -22,31 +29,115 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkspaceSonarRoute = WorkspaceSonarRouteImport.update({
+  id: '/sonar',
+  path: '/sonar',
+  getParentRoute: () => WorkspaceRoute,
+} as any)
+const WorkspaceSettingsRoute = WorkspaceSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => WorkspaceRoute,
+} as any)
+const WorkspaceHorizonRoute = WorkspaceHorizonRouteImport.update({
+  id: '/horizon',
+  path: '/horizon',
+  getParentRoute: () => WorkspaceRoute,
+} as any)
+const WorkspaceDashboardRoute = WorkspaceDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => WorkspaceRoute,
+} as any)
+const WorkspaceCrewRoute = WorkspaceCrewRouteImport.update({
+  id: '/crew',
+  path: '/crew',
+  getParentRoute: () => WorkspaceRoute,
+} as any)
+const WorkspaceChartRoute = WorkspaceChartRouteImport.update({
+  id: '/chart',
+  path: '/chart',
+  getParentRoute: () => WorkspaceRoute,
+} as any)
+const WorkspaceCargoRoute = WorkspaceCargoRouteImport.update({
+  id: '/cargo',
+  path: '/cargo',
+  getParentRoute: () => WorkspaceRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/workspace': typeof WorkspaceRoute
+  '/workspace': typeof WorkspaceRouteWithChildren
+  '/workspace/cargo': typeof WorkspaceCargoRoute
+  '/workspace/chart': typeof WorkspaceChartRoute
+  '/workspace/crew': typeof WorkspaceCrewRoute
+  '/workspace/dashboard': typeof WorkspaceDashboardRoute
+  '/workspace/horizon': typeof WorkspaceHorizonRoute
+  '/workspace/settings': typeof WorkspaceSettingsRoute
+  '/workspace/sonar': typeof WorkspaceSonarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/workspace': typeof WorkspaceRoute
+  '/workspace': typeof WorkspaceRouteWithChildren
+  '/workspace/cargo': typeof WorkspaceCargoRoute
+  '/workspace/chart': typeof WorkspaceChartRoute
+  '/workspace/crew': typeof WorkspaceCrewRoute
+  '/workspace/dashboard': typeof WorkspaceDashboardRoute
+  '/workspace/horizon': typeof WorkspaceHorizonRoute
+  '/workspace/settings': typeof WorkspaceSettingsRoute
+  '/workspace/sonar': typeof WorkspaceSonarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/workspace': typeof WorkspaceRoute
+  '/workspace': typeof WorkspaceRouteWithChildren
+  '/workspace/cargo': typeof WorkspaceCargoRoute
+  '/workspace/chart': typeof WorkspaceChartRoute
+  '/workspace/crew': typeof WorkspaceCrewRoute
+  '/workspace/dashboard': typeof WorkspaceDashboardRoute
+  '/workspace/horizon': typeof WorkspaceHorizonRoute
+  '/workspace/settings': typeof WorkspaceSettingsRoute
+  '/workspace/sonar': typeof WorkspaceSonarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/workspace'
+  fullPaths:
+    | '/'
+    | '/workspace'
+    | '/workspace/cargo'
+    | '/workspace/chart'
+    | '/workspace/crew'
+    | '/workspace/dashboard'
+    | '/workspace/horizon'
+    | '/workspace/settings'
+    | '/workspace/sonar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/workspace'
-  id: '__root__' | '/' | '/workspace'
+  to:
+    | '/'
+    | '/workspace'
+    | '/workspace/cargo'
+    | '/workspace/chart'
+    | '/workspace/crew'
+    | '/workspace/dashboard'
+    | '/workspace/horizon'
+    | '/workspace/settings'
+    | '/workspace/sonar'
+  id:
+    | '__root__'
+    | '/'
+    | '/workspace'
+    | '/workspace/cargo'
+    | '/workspace/chart'
+    | '/workspace/crew'
+    | '/workspace/dashboard'
+    | '/workspace/horizon'
+    | '/workspace/settings'
+    | '/workspace/sonar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  WorkspaceRoute: typeof WorkspaceRoute
+  WorkspaceRoute: typeof WorkspaceRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +156,85 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/workspace/sonar': {
+      id: '/workspace/sonar'
+      path: '/sonar'
+      fullPath: '/workspace/sonar'
+      preLoaderRoute: typeof WorkspaceSonarRouteImport
+      parentRoute: typeof WorkspaceRoute
+    }
+    '/workspace/settings': {
+      id: '/workspace/settings'
+      path: '/settings'
+      fullPath: '/workspace/settings'
+      preLoaderRoute: typeof WorkspaceSettingsRouteImport
+      parentRoute: typeof WorkspaceRoute
+    }
+    '/workspace/horizon': {
+      id: '/workspace/horizon'
+      path: '/horizon'
+      fullPath: '/workspace/horizon'
+      preLoaderRoute: typeof WorkspaceHorizonRouteImport
+      parentRoute: typeof WorkspaceRoute
+    }
+    '/workspace/dashboard': {
+      id: '/workspace/dashboard'
+      path: '/dashboard'
+      fullPath: '/workspace/dashboard'
+      preLoaderRoute: typeof WorkspaceDashboardRouteImport
+      parentRoute: typeof WorkspaceRoute
+    }
+    '/workspace/crew': {
+      id: '/workspace/crew'
+      path: '/crew'
+      fullPath: '/workspace/crew'
+      preLoaderRoute: typeof WorkspaceCrewRouteImport
+      parentRoute: typeof WorkspaceRoute
+    }
+    '/workspace/chart': {
+      id: '/workspace/chart'
+      path: '/chart'
+      fullPath: '/workspace/chart'
+      preLoaderRoute: typeof WorkspaceChartRouteImport
+      parentRoute: typeof WorkspaceRoute
+    }
+    '/workspace/cargo': {
+      id: '/workspace/cargo'
+      path: '/cargo'
+      fullPath: '/workspace/cargo'
+      preLoaderRoute: typeof WorkspaceCargoRouteImport
+      parentRoute: typeof WorkspaceRoute
+    }
   }
 }
 
+interface WorkspaceRouteChildren {
+  WorkspaceCargoRoute: typeof WorkspaceCargoRoute
+  WorkspaceChartRoute: typeof WorkspaceChartRoute
+  WorkspaceCrewRoute: typeof WorkspaceCrewRoute
+  WorkspaceDashboardRoute: typeof WorkspaceDashboardRoute
+  WorkspaceHorizonRoute: typeof WorkspaceHorizonRoute
+  WorkspaceSettingsRoute: typeof WorkspaceSettingsRoute
+  WorkspaceSonarRoute: typeof WorkspaceSonarRoute
+}
+
+const WorkspaceRouteChildren: WorkspaceRouteChildren = {
+  WorkspaceCargoRoute: WorkspaceCargoRoute,
+  WorkspaceChartRoute: WorkspaceChartRoute,
+  WorkspaceCrewRoute: WorkspaceCrewRoute,
+  WorkspaceDashboardRoute: WorkspaceDashboardRoute,
+  WorkspaceHorizonRoute: WorkspaceHorizonRoute,
+  WorkspaceSettingsRoute: WorkspaceSettingsRoute,
+  WorkspaceSonarRoute: WorkspaceSonarRoute,
+}
+
+const WorkspaceRouteWithChildren = WorkspaceRoute._addFileChildren(
+  WorkspaceRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  WorkspaceRoute: WorkspaceRoute,
+  WorkspaceRoute: WorkspaceRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -4,8 +4,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   TranslateIcon,
   ArrowSquareOutIcon,
-  FolderOpenIcon,
-  RadioButtonIcon,
+  BookOpenIcon,
+  BoatIcon,
   AnchorSimpleIcon,
 } from "@phosphor-icons/react";
 
@@ -21,7 +21,10 @@ function RouteComponent() {
         <p className="text-foreground/21">|</p>
         <p className="cursor-pointer">English</p>
         <p className="text-foreground/21">|</p>
-        <a href="https://www.allneos.org/translate/anchor" target="_blank">
+        <a
+          href="https://www.allneos.org/renpy/anchor/translate"
+          target="_blank"
+        >
           <Button variant="link">
             Help us translate the app
             <ArrowSquareOutIcon color="currentColor" size={14} />
@@ -43,16 +46,16 @@ function RouteComponent() {
 
         {/* Buttons */}
         <div className="flex items-center gap-2">
-          <Link to="/workspace">
+          <a href="https://www.allneos.org/renpy/anchor/docs">
             <Button variant="secondary">
-              Look around first{" "}
-              <RadioButtonIcon color="currentColor" size={14} />
+              View Tutorial
+              <BookOpenIcon color="currentColor" size={14} />
             </Button>
-          </Link>
-          <Link to="/">
+          </a>
+          <Link to="/workspace/dashboard">
             <Button>
-              Open a Ren'Py Project
-              <FolderOpenIcon color="currentColor" size={14} />
+              Set Sail
+              <BoatIcon color="currentColor" size={14} />
             </Button>
           </Link>
         </div>
