@@ -1,3 +1,4 @@
+import { Soon } from "@/components/soon";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/workspace/sonar")({
@@ -5,5 +6,5 @@ export const Route = createFileRoute("/workspace/sonar")({
 });
 
 function RouteComponent() {
-  return <div></div>;
+  return <Soon moduleKey="sonar" />;
 }

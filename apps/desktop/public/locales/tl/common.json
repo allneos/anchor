@@ -1,0 +1,39 @@
+{
+  "button": {
+    "help": "Tulungan kami isalin ang aplikasyon sa ibang wika",
+    "tutorial": "Tignan ang Sanggunian",
+    "start": "Tara't Maglayag!",
+    "planned_features": "Tignan ang mga naka-planong katangian"
+  },
+  "text": {
+    "soon": "Darating na"
+  },
+  "module": {
+    "dashboard": {
+      "short_description": "Quick view of current project"
+    },
+    "sonar": {
+      "short_description": "Online choice stats database",
+      "long_description": "An online player choice stats dashboard. Inspired from games like Detroit: Become Human and Dispatch."
+    },
+    "chart": {
+      "short_description": "A visual mapper for your project",
+      "long_description": "A visual mapper for Ren'Py assets, characters, scenes, scripts, and more."
+    },
+    "horizon": {
+      "short_description": "A visual board for your inspirations",
+      "long_description": "A visual board for all your inspiration and branding needs."
+    },
+    "crew": {
+      "short_description": "Collaborate with your team",
+      "long_description": "Collaborate with your team easier! Bring your own cloud storage, and update your progress with the team using a simplified version control."
+    },
+    "cargo": {
+      "short_description": "Install packages for your project",
+      "long_description": "Packages installer - Packages are ready-to-use Ren'Py code. They are either built by Allneos or the Ren'Py community."
+    },
+    "settings": {
+      "short_description": "Anchor app configuration"
+    }
+  }
+}

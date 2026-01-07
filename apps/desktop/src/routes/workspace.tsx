@@ -1,82 +1,36 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
-import {
-  AnchorSimpleIcon,
-  BoatIcon,
-  TargetIcon,
-  MapTrifoldIcon,
-  SunHorizonIcon,
-  UsersThreeIcon,
-  ShippingContainerIcon,
-  GearSixIcon,
-} from "@phosphor-icons/react";
+import { RouteTracker } from "@/components/route-tracker";
+import { AnchorSimpleIcon } from "@phosphor-icons/react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useTranslation } from "react-i18next";
+import { NAV_MODULES, NAV_FOOTER_MODULES } from "@/config/app";
 
 export const Route = createFileRoute("/workspace")({
   component: RouteComponent,
 });
 
 const iconSize = 21;
-const separator = "-";
-const links = [
-  {
-    to: "/workspace/dashboard",
-    icon: <BoatIcon color="currentColor" size={iconSize} />,
-    label: `Dashboard ${separator} Quick view of current project`,
-  },
-  {
-    to: "/workspace/sonar",
-    icon: <TargetIcon color="currentColor" size={iconSize} />,
-    label: `Sonar ${separator} Online choice stats database`,
-  },
-  {
-    to: "/workspace/chart",
-    icon: <MapTrifoldIcon color="currentColor" size={iconSize} />,
-    label: `Chart ${separator} A visual mapper for your project`,
-  },
-  {
-    to: "/workspace/horizon",
-    icon: <SunHorizonIcon color="currentColor" size={iconSize} />,
-    label: `Horizon ${separator} A visual board for inspirations`,
-  },
-  {
-    to: "/workspace/crew",
-    icon: <UsersThreeIcon color="currentColor" size={iconSize} />,
-    label: `Crew ${separator} Collaborate with your team`,
-  },
-  {
-    to: "/workspace/cargo",
-    icon: <ShippingContainerIcon color="currentColor" size={iconSize} />,
-    label: `Cargo ${separator} Install packages for your project`,
-  },
-];
-const linksFooter = [
-  {
-    to: "/workspace/settings",
-    icon: <GearSixIcon color="currentColor" size={iconSize} />,
-    label: `Settings ${separator} Anchor configuration`,
-  },
-];
 
 function RouteComponent() {
   return (
     <div className="h-full w-full flex">
+      <RouteTracker />
       <nav className="p-3 flex flex-col gap-3 justify-between">
         <div className="flex flex-col gap-3">
           <div className="p-3 flex items-center justify-center rounded-lg text-primary">
             <AnchorSimpleIcon color="currentColor" size={iconSize} />
           </div>
-
-          {links.map((link) => (
-            <NavButton key={link.to} {...link} />
+          {NAV_MODULES.map((module) => (
+            <NavButton key={module.key} module={module} />
           ))}
         </div>
         <div className="flex flex-col gap-3">
-          {linksFooter.map((link) => (
-            <NavButton key={link.to} {...link} />
+          {NAV_FOOTER_MODULES.map((module) => (
+            <NavButton key={module.key} module={module} />
           ))}
         </div>
       </nav>
@@ -87,20 +41,25 @@ function RouteComponent() {
   );
 }
 
-function NavButton(link: { to: string; icon: React.ReactNode; label: string }) {
+function NavButton({ module }: { module: (typeof NAV_MODULES)[number] }) {
+  const { t } = useTranslation("common");
+  const IconComponent = module.icon;
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <Link
-          to={link.to}
+          to={module.route}
           className="p-3 flex items-center justify-center rounded-lg hover:bg-primary/14 transition-all duration-350"
           activeProps={{ className: "bg-primary/21 text-primary" }}
         >
-          {link.icon}
+          <IconComponent color="currentColor" size={iconSize} />
         </Link>
       </TooltipTrigger>
       <TooltipContent side="right">
-        <p>{link.label}</p>
+        <p>
+          {module.name} - {t(`module.${module.key}.short_description` as const)}
+        </p>
       </TooltipContent>
     </Tooltip>
   );

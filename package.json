@@ -1,10 +1,10 @@
 {
-  "name": "allneos-anchor",
+  "name": "@allneos/anchor",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "desktop": "pnpm --filter anchor-desktop run tauri dev",
+    "desktop": "pnpm --filter @anchor/desktop run tauri dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
