@@ -1,0 +1,81 @@
+name: Translation
+description: Add or update translations (i18n)
+title: "[i18n] "
+labels: ["i18n"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us add or improve translations!
+
+  - type: dropdown
+    id: workspace
+    attributes:
+      label: Workspace
+      description: Which part needs translation?
+      options:
+        - Desktop App
+        - Website
+        - SDK (Ren'Py/SQL)
+        - Multiple
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      description: Which language?
+      options:
+        - Spanish (es)
+        - French (fr)
+        - German (de)
+        - Japanese (ja)
+        - Chinese Simplified (zh-CN)
+        - Chinese Traditional (zh-TW)
+        - Korean (ko)
+        - Portuguese (pt)
+        - Russian (ru)
+        - Italian (it)
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: language_other
+    attributes:
+      label: Other Language
+      description: If you selected "Other", specify the language and code
+      placeholder: "e.g., Polish (pl)"
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Translation Type
+      options:
+        - New translation (language doesn't exist yet)
+        - Update existing translation (fix errors)
+        - Add missing strings to existing translation
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What needs translation or what's incorrect?
+      placeholder: |
+        For new translations: "I can translate the app to Spanish"
+        For updates: "The German translation for 'settings' is incorrect"
+        For missing strings: "The new feature X isn't translated in French"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any notes about regional variants, formality, etc.?
+      placeholder: Optional - cultural context, preferred terminology, etc.
+    validations:
+      required: false

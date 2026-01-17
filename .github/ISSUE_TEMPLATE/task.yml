@@ -1,0 +1,62 @@
+name: Task
+description: General development task or chore
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Create a development task, chore, or technical work item.
+
+  - type: dropdown
+    id: workspace
+    attributes:
+      label: Workspace
+      description: Which part of the project?
+      options:
+        - Desktop App
+        - Website
+        - SDK (Ren'Py/SQL)
+        - Multiple/Shared
+        - Infrastructure
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done?
+      placeholder: Describe the task...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How do we know this is complete?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this needed? Any dependencies or blockers?
+      placeholder: Background information, dependencies, related issues...
+    validations:
+      required: false
+
+  - type: textarea
+    id: technical
+    attributes:
+      label: Technical Notes
+      description: Implementation details, files to modify, etc.
+      placeholder: Technical approach, affected files, considerations...
+    validations:
+      required: false
